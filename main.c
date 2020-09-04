@@ -10,6 +10,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 int main(int argc, char *argv[])
 #endif
 {
+#ifdef ODPLAT_WIN32
+   od_control.od_cmd_show = nCmdShow;
+#endif
+#ifdef ODPLAT_WIN32
+   od_parse_cmd_line(lpszCmdLine);
+#else
+   od_parse_cmd_line(argc, argv);
+#endif
     od_printf("This is a very simple number guessing game. Each time you will be given a number\r\n");
     od_printf("of the range 0-10\r\n");
     od_printf("The objective of the game is to guess whether the next number is going to be\r\n");
